@@ -6,23 +6,24 @@
 #include <cstdlib>
 #include <cctype>
 #include <sstream>
-
-enum NumType {
-	INT_NUM = 1,
-	FLT_NUM,
-	DBL_NUM
-};
+#include <iomanip>
+#include <limits>
 
 struct Number {
 	int		inum;
 	float	fnum;
 	double	dnum;
-	NumType	num_type;
 };
 
 class ScalarConverter {
 	public:
 		static void convert(std::string& literal);
+	
+	private:
+		ScalarConverter();
+		ScalarConverter(const ScalarConverter& src);
+		ScalarConverter& operator=(const ScalarConverter& src);
+		~ScalarConverter();
 };
 
 #endif
