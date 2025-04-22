@@ -3,16 +3,11 @@
 
 #include <string>
 #include <iostream>
-#include <cstdlib>
-#include <cctype>
-#include <sstream>
-#include <iomanip>
-#include <limits>
+#include <stdint.h>
 
-struct Number {
-	int		inum;
-	float	fnum;
-	double	dnum;
+struct Data {
+	int			inum;
+	std::string str;
 };
 
 class Serializer {
