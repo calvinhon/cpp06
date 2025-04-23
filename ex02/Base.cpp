@@ -18,8 +18,10 @@ void Base::identify(Base* p) {
 		std::cout << "A" << std::endl;
 	else if (dynamic_cast<B*>(p))
 		std::cout << "B" << std::endl; 
-	else
+	else if (dynamic_cast<C*>(p))
 		std::cout << "C" << std::endl; 
+	else if (dynamic_cast<C*>(p) == NULL)
+		std::cout << "Return is NULL" << std::endl; 
 }
 
 void Base::identify(Base& p) {

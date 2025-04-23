@@ -42,10 +42,23 @@ bool isNum(const std::string& literal, Number* n) {
 	return 0;
 }
 
+int	calcPrecision(std::string& literal) {
+	int	precision = 0;
+	int	i = -1;
+
+	while (literal[++i] != '.');
+	precision = i;
+	while (isdigit(literal[++i]));
+	precision = i - precision - 1;
+	return precision;
+}
+
 void ScalarConverter::convert(std::string& literal) {
-	int	i = isPseudo(literal);
-	Number* n = new Number();
-	std::cout << std::fixed << std::setprecision(1);
+	int		i = isPseudo(literal);
+	Number*	n = new Number();
+	int		precision = calcPrecision(literal); 
+
+	std::cout << std::fixed << std::setprecision(precision);
 	if (i != -1) {
 		std::cout << "char: impossible\nint: impossible\n";
 		if (i < 6)
@@ -72,12 +85,12 @@ void ScalarConverter::convert(std::string& literal) {
 		else
 			std::cout << n->inum;
 		std::cout << "\nfloat: ";
-		if (n->dnum < std::numeric_limits<float>::lowest() || n->dnum > std::numeric_limits<float>::max())
+		if (n->dnum < -std::numeric_limits<float>::max() || n->dnum > std::numeric_limits<float>::max())
 			std::cout << "impossible";
 		else
 			std::cout << n->fnum << "f";
 		std::cout << "\ndouble: ";
-		if (n->dnum < std::numeric_limits<double>::lowest() || n->dnum > std::numeric_limits<double>::max())
+		if (n->dnum < -std::numeric_limits<double>::max() || n->dnum > std::numeric_limits<double>::max())
 			std::cout << "impossible" << std::endl;
 		else
 			std::cout << n->dnum << std::endl;

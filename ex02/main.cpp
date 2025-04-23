@@ -5,6 +5,10 @@ int main() {
 	Base::identify(ptr);
 	delete ptr;
 
+	Base* ptr2 = NULL;
+	Base::identify(ptr2);
+	delete ptr2;
+
 	try {
 		Base* ref = Base::generate();
 		Base::identify(*ref);
